@@ -292,6 +292,7 @@ async def start(client, message):
     elif data.split("-", 1)[0] == "verify":
         userid = data.split("-", 2)[1]
         token = data.split("-", 3)[2]
+        fileid = data.split("-", 3)[3]
         if str(message.from_user.id) != str(userid):
             return await message.reply_text(
                 text="<b>Invalid link or Expired link !</b>",
@@ -299,10 +300,23 @@ async def start(client, message):
             )
         is_valid = await check_token(client, userid, token)
         if is_valid == True:
+            if fileid == "send_all":
+                btn = [[
+                    InlineKeyboardButton("Gᴇᴛ Fɪʟᴇ", callback_data=f"checksub#send_all")
+                ]]
             await message.reply_photo(
                 photo = VRFIED_IMG,
                 caption = script.VERIFED_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
                 # protect_content=True
+            )
+            return
+            btn = [[
+                InlineKeyboardButton("Get File", url=f"https://telegram.me/{temp.U_NAME}?start=files_{fileid}")
+            ]]
+            await message.reply_text(
+                text=f"<b>सफलतापूर्वक वेरिफाई हो गए हैं ! ✅\n\nअब आप 2 Days अनलिमिटेड मूवी ले सकते है।</b>",
+                #protect_content=True if PROTECT_CONTENT else False,
+                reply_markup=InlineKeyboardMarkup(btn)
             )
             await verify_user(client, userid, token)
         else:
