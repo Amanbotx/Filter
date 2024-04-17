@@ -296,7 +296,7 @@ async def start(client, message):
         if str(message.from_user.id) != str(userid):
             return await message.reply_text(
                 text="<b>Invalid link or Expired link !</b>",
-                protect_content=True
+                #protect_content=True
             )
         is_valid = await check_token(client, userid, token)
         if is_valid == True:
@@ -315,14 +315,13 @@ async def start(client, message):
             ]]
             await message.reply_text(
                 text=f"<b>सफलतापूर्वक वेरिफाई हो गए हैं ! ✅\n\nअब आप 2 Days अनलिमिटेड मूवी ले सकते है।</b>",
-                #protect_content=True if PROTECT_CONTENT else False,
                 reply_markup=InlineKeyboardMarkup(btn)
             )
             await verify_user(client, userid, token)
         else:
             return await message.reply_text(
                 text="<b>Invalid link or Expired link !</b>",
-                protect_content=True
+                #protect_content=True
             )
     if data.startswith("sendfiles"):
         protect_content=True
