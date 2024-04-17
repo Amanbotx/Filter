@@ -289,7 +289,27 @@ async def start(client, message):
             await asyncio.sleep(1) 
         return await sts.delete()
 
-    
+    elif data.split("-", 1)[0] == "verify":
+        userid = data.split("-", 2)[1]
+        token = data.split("-", 3)[2]
+        if str(message.from_user.id) != str(userid):
+            return await message.reply_text(
+                text="<b>Invalid link or Expired link !</b>",
+                protect_content=True
+            )
+        is_valid = await check_token(client, userid, token)
+        if is_valid == True:
+            await message.reply_photo(
+                photo = VRFIED_IMG,
+                caption = script.VERIFED_TXT.format(message.from_user.mention, gtxt, temp.U_NAME, temp.B_NAME),
+                # protect_content=True
+            )
+            await verify_user(client, userid, token)
+        else:
+            return await message.reply_text(
+                text="<b>Invalid link or Expired link !</b>",
+                protect_content=True
+            )
     if data.startswith("sendfiles"):
         protect_content=True
         current_time = datetime.now(pytz.timezone(TIMEZONE))
