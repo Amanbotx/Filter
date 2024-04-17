@@ -306,7 +306,7 @@ async def start(client, message):
                 ]]
             await message.reply_photo(
                 photo = VRFIED_IMG,
-                caption = script.VERIFED_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
+                caption = script.VERIFED_TXT.format(message.from_user.mention, gtxt, temp.U_NAME, temp.B_NAME),
                 # protect_content=True
             )
             return
