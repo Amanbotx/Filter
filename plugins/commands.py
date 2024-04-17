@@ -594,26 +594,26 @@ async def start(client, message):
                 InlineKeyboardButton("How To Open Link & Verify", url=HOWTOVERIFY)
             ]]
             reply_markup = InlineKeyboardMarkup(btn)
-                    current_time = datetime.now(pytz.timezone(TIMEZONE))
-                    curr_time = current_time.hour        
-                    if curr_time < 12:
-                        gtxt = "ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ 👋" 
-                    elif curr_time < 17:
-                        gtxt = "ɢᴏᴏᴅ ᴀғᴛᴇʀɴᴏᴏɴ 👋" 
-                    elif curr_time < 21:
-                        gtxt = "ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ 👋"
-                    else:
-                        gtxt = "ɢᴏᴏᴅ ɴɪɢʜᴛ 👋"
-                    m=await message.reply_text("<i>Cʜᴇᴄᴋɪɴɢ Vᴇʀɪғɪᴄᴀᴛɪᴏɴ Sᴛᴀᴛᴜs</i>")
-                    await asyncio.sleep(0.4)
-                    await m.edit_text("<b><i>🔗Gᴇɴᴇʀᴀᴛɪɴɢ Lɪɴᴋ Pʟᴢ Wᴀɪᴛ...🔗</i></b>")
-                    await asyncio.sleep(0.3)
-                    await m.delete()       
-                    await message.reply_photo(
-                    photo = VRFY_IMG,
-                    caption=script.VERIFY_TXT.format(message.from_user.mention, gtxt, temp.U_NAME, temp.B_NAME),
-                    # protect_content=True,
-                    reply_markup=InlineKeyboardMarkup(btn)
+            current_time = datetime.now(pytz.timezone(TIMEZONE))
+            curr_time = current_time.hour        
+            if curr_time < 12:
+                gtxt = "ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ 👋" 
+            elif curr_time < 17:
+                gtxt = "ɢᴏᴏᴅ ᴀғᴛᴇʀɴᴏᴏɴ 👋" 
+            elif curr_time < 21:
+                gtxt = "ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ 👋"
+            else:
+                gtxt = "ɢᴏᴏᴅ ɴɪɢʜᴛ 👋"
+            m=await message.reply_text("<i>Cʜᴇᴄᴋɪɴɢ Vᴇʀɪғɪᴄᴀᴛɪᴏɴ Sᴛᴀᴛᴜs</i>")
+            await asyncio.sleep(0.4)
+            await m.edit_text("<b><i>🔗Gᴇɴᴇʀᴀᴛɪɴɢ Lɪɴᴋ Pʟᴢ Wᴀɪᴛ...🔗</i></b>")
+            await asyncio.sleep(0.3)
+            await m.delete()       
+            await message.reply_photo(
+            photo = VRFY_IMG,
+            caption=script.VERIFY_TXT.format(message.from_user.mention, gtxt, temp.U_NAME, temp.B_NAME),
+            # protect_content=True,
+            reply_markup=InlineKeyboardMarkup(btn)
                                                 )
             return
     msg = await client.send_cached_media(
