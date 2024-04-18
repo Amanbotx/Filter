@@ -61,11 +61,7 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 # Verify
 # Verification On ( True ) / Off ( False )
 HOWTOVERIFY = environ.get('HOWTOVERIFY', 'https://t.me/') # How to open tutorial link for verification
-IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), False)
-HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://youtube.com/shorts/-gZtE-mc7XY?si=eFVF-gNe0Bo-xUmZ")
-VERIFY2_URL = environ.get('VERIFY2_URL', "ziplinker.net")
-VERIFY2_API = environ.get('VERIFY2_API', "c2511cd6b07f69fedce6caddc48cf6cf10a56dfa")
-# Others
+VERIFY = bool(environ.get('VERIFY', True))
 SHORTLINK_URL = environ.get('SHORTLINK_URL', 'OMNIFLY.IN.NET')
 SHORTLINK_API = environ.get('SHORTLINK_API', '4c9881256b470862023ac67db546b25175fb4b20')
 IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', False))
